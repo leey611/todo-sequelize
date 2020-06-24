@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 3000;
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const usePassport = require('./config/passport');
+const flash = require('connect-flash');
 const bcrypt = require('bcryptjs');
 const routes = require('./routes');
 
@@ -15,9 +17,20 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET || 'secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
   })
 );
+
+usePassport(app);
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.warning_msg = req.flash('warning_msg');
+  res.locals.loginError = req.flash('error');
+  next();
+});
 
 //set up bodyparser
 app.use(express.urlencoded({ extended: false }));
