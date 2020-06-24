@@ -1,0 +1,34 @@
+<style>
+  .pageImg {
+    width: 100%;
+  }
+
+  @media all and (min-width: 700px) {
+    .pageImg {
+      width: 65%;
+      max-width: 750px;
+    }
+  }
+</style>
+
+<div class="d-flex flex-wrap justify-content-around">
+  <img src="/stylesheets/todo.png" class="pageImg">
+  <div class="d-flex flex-column" style="padding: 30px;">
+    <h1 class="">Login</h1>
+    {{!-- {{> message}} --}}
+    <form action="/users/login" method="post">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="Your email" value="{{ email }}">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Your password" value="{{ password }}">
+      </div>
+
+
+      <small>Not a member? <a href="/users/register" class="darkBlueText">Register</a></small>
+      <button type="submit" class="btn btn-block mt-2 lightBlueBg">Login</button>
+    </form>
+  </div>
+</div>

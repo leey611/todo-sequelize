@@ -1,0 +1,19 @@
+.darkBlueBg {
+  background-color: #1f4068;
+}
+
+.darkBlueText {
+  color: #1f4068;
+}
+
+.lightBlueBg {
+  background-color: #a5e5ff;
+}
+
+.lightBlueText {
+  color: #a5e5ff;
+}
+
+h1 {
+  font-size: 28px;
+}
