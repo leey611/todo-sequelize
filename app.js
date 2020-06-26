@@ -1,12 +1,14 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const usePassport = require('./config/passport');
 const flash = require('connect-flash');
-const bcrypt = require('bcryptjs');
 const routes = require('./routes');
 
 //set handlebars as view engine

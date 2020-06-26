@@ -6,6 +6,8 @@ const { authenticator } = require('../middleware/auth');
 router.use('/users', require('./modules/users'));
 // use todos route
 router.use('/todos/', authenticator, require('./modules/todos'));
+// use facebook auth route
+router.use('/auth', require('./modules/auth'));
 // use home route
 router.use('/', authenticator, require('./modules/home'));
 
